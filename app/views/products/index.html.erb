@@ -1,2 +1,10 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<main>
+	<div class="productBox">
+		<% @products.each do |product| %>
+		<div class="view view-first">
+			<%= link_to post_image_path(post_image.id) do %>
+            <%= attachment_image_tag post_image, :image %>
+                    <% end %>
+                  </div>
+	</div>
+</main>
