@@ -1,14 +1,19 @@
 class Admin::UsersController < ApplicationController
-  def index
-  end
 
-  def show
-  end
+	# アドミンユーザ以外のアクセスを防ぐ
+    skip_before_action :authenticate_user!
+	before_action :authenticate_admin!
 
-  def edit
-  end
+    def index
+    end
 
-  def update
-  end
+    def show
+    end
+
+    def edit
+    end
+
+    def update
+    end
 
 end
