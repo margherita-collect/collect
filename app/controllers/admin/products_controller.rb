@@ -11,6 +11,7 @@ class Admin::ProductsController < ApplicationController
     end
 
     def index
+        @test = "admin/products/index"
     end
 
     def show
