@@ -1,20 +1,25 @@
 class Admin::ProductsController < ApplicationController
-  def new
-  end
 
-  def create
-  end
+  	# アドミンユーザ以外のアクセスを防ぐ
+    skip_before_action :authenticate_user!
+	before_action :authenticate_admin!
 
-  def index
-  end
+    def new
+    end
 
-  def show
-  end
+    def create
+    end
 
-  def edit
-  end
+    def index
+    end
 
-  def update
-  end
+    def show
+    end
+
+    def edit
+    end
+
+    def update
+    end
 
 end
