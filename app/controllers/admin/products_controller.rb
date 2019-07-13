@@ -2,7 +2,7 @@ class Admin::ProductsController < ApplicationController
   def new
   end
 
-  def edit
+  def create
   end
 
   def index
@@ -10,4 +10,11 @@ class Admin::ProductsController < ApplicationController
 
   def show
   end
+
+  def edit
+  end
+
+  def update
+  end
+
 end
