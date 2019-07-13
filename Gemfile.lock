@@ -56,7 +56,6 @@ GEM
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
-    bcrypt (3.1.13)
     bindex (0.7.0)
     bootsnap (1.4.4)
       msgpack (~> 1.0)
@@ -84,6 +83,7 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
     crass (1.0.4)
+<<<<<<< HEAD
     devise (4.6.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -92,6 +92,8 @@ GEM
       warden (~> 1.2.3)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+=======
+>>>>>>> 8aa9e619f4a317f80249d5429b79177870a31d2c
     erubi (1.8.0)
     execjs (2.7.0)
     ffi (1.11.1)
@@ -130,7 +132,6 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.10.3)
       mini_portile2 (~> 2.4.0)
-    orm_adapter (0.5.0)
     public_suffix (3.1.0)
     puma (3.12.1)
     rack (2.0.7)
@@ -170,6 +171,7 @@ GEM
       mini_magick (~> 4.0)
       refile (~> 0.5)
     regexp_parser (1.5.1)
+<<<<<<< HEAD
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -177,6 +179,8 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+=======
+>>>>>>> 8aa9e619f4a317f80249d5429b79177870a31d2c
     ruby_dep (1.5.0)
     rubyzip (1.2.3)
     sass (3.7.4)
@@ -220,11 +224,14 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
+<<<<<<< HEAD
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.6)
     warden (1.2.8)
       rack (>= 2.0.6)
+=======
+>>>>>>> 8aa9e619f4a317f80249d5429b79177870a31d2c
     web-console (3.7.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -245,7 +252,6 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
-  devise
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   puma (~> 3.11)
