@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  devise_for :admins
   resources :products, only: [:show, :index]
   devise_for :users
 
