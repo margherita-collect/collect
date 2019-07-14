@@ -1,14 +1,23 @@
 Rails.application.routes.draw do
 
-  
+
   devise_for :users
+  devise_for :admins
 
-  resources :users, only: [:show,:edit,:update]
+  root to: 'products#index'
 
+  resources :products, only: [:show, :index]
+  
+  resources :users, only: [:show, :edit, :update] do
+  	resource :purchases, only: [:index]
+  	resource :carts, only: [:create, :destroy, :index]
+  end
 
-  get 'products/index'
-  get 'products/show'
+  namespace :admin do
+  	resources :products, only: [:new, :create, :edit, :update, :index, :show]
+  	resources :purchases, only: [:index, :update]
+  	resources :users, only: [:index, :show, :edit, :update]
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
-
