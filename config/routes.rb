@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
+  
   devise_for :users
+
+  resources :users, only: [:show,:edit,:update]
+
 
   get 'products/index'
   get 'products/show'
