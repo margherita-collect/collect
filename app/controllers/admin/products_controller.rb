@@ -14,7 +14,7 @@ class Admin::ProductsController < ApplicationController
         # DBへ保存する
          product.save
         # トップ画面へリダイレクト
-         redirect_to "/admin/products"
+         redirect_to "admin/products"
     end
 
     def index
