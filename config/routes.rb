@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
 
+
   devise_for :users
   devise_for :admins
 
+  root to: 'products#index'
+
   resources :products, only: [:show, :index]
+  
   resources :users, only: [:show, :edit, :update] do
   	resource :purchases, only: [:index]
   	resource :carts, only: [:create, :destroy, :index]
