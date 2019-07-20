@@ -7,10 +7,10 @@ Rails.application.routes.draw do
   root to: 'products#index'
 
   resources :products, only: [:show, :index]
-  
+
   resources :users, only: [:show, :edit, :update] do
-  	resource :purchases, only: [:index]
-  	resource :carts, only: [:create, :destroy, :index]
+  	resources :purchases, only: [:index]
+  	resources :carts, only: [:create, :destroy, :index]
   end
 
   namespace :admin do
