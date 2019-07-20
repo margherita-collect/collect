@@ -1,7 +1,6 @@
 <h1>商品詳細ページ</h1>
 
-    <!-- カテゴリー -->
-    <%= @products.genre_id %>
+
 
 	<!-- 商品画像 -->
 	<%= attachment_image_tag @products, :image, :fill, 60, 60, format: 'jpeg' %> 
@@ -20,3 +19,7 @@
 
     <!-- 価格 -->
     <%= @products.price %>
+    
+
+<%= link_to "商品編集", edit_admin_product_path(@products.id) %>
+<p>ディスク１</p>

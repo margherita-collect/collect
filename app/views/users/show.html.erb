@@ -1,0 +1,16 @@
+
+<h1>ユーザマイページ</h1>
+
+
+<div class="profile-container">
+    <p><%= @user.surname%>さん</p>
+    <p><%= @user.email%></p>
+    <p><%= @user.zip_code%></p>
+    <p><%= @user.address%></p>
+
+	<% if @user.id == current_user.id %>
+        <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+    <% end %>
+</div>
+
+<%= link_to "購入履歴一覧", "#" %>
