@@ -67,6 +67,8 @@ gem "refile-mini_magick"
 
 # Original
 gem 'devise'
+gem 'jquery-rails'
+gem 'cocoon'
 
 
 
