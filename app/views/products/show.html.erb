@@ -1,22 +1,42 @@
 <h1>商品詳細ページ</h1>
 
-    <!-- カテゴリー -->
-    <%= @products.genre_id %>
 
-	<!-- 商品画像 -->
-	<%= attachment_image_tag @products, :image, :fill, 60, 60, format: 'jpeg' %> 
+<div class="shouArea clearfix">
+    <div class="left cdImage">
+        <!-- 商品画像 -->
+    <%= attachment_image_tag @products, :image, :fill, 60, 60, format: 'jpeg' %> 
+    </div>
+    <div class="right cdImage">
+        <!-- 商品画像 -->
+        <p class="productTitle">
+            <%= @products.product_name %>
+        </p>
+        <p class="productIntro">
+            <%= @products.artist.artist_name %>
+        </p>
+        <p class="productIntro">
+            <%= @products.genre.genre_name %>
+        </p>
+        <p class="productIntro">
+            <%= @products.label.label_name %>
+        </p>
+        <p class="productPrice">
+            <%= @products.price %>
+        </p>
+        <p></p>
+        <p></p>
+    </div>
+</div>
 
-	<!--  商品名 -->
-    <%= @products.product_name %>
 
-    <!-- アーティスト名 -->
-    <%= @products.artist_id %>
-
-    <!-- レーベル -->
-    <%= @products.label_id %>
-    
     <!-- ステータス -->
     <%= @products.status %>
 
-    <!-- 価格 -->
-    <%= @products.price %>
+
+
+    <% @products.disc.each do |disc| %>
+    <%= disc.disc_name %>
+    <% @products.disc.song.each do |song| %>
+    <%= song.song_name %>
+    <% end %>
+    <% end %>
