@@ -16,7 +16,7 @@
 		</ul>
 	</div>
 
-      <nav class="navbar navbar-inverse">
+      <nav class="navbar navbar-inverse　navbar_user">
           <div class="container-fluid">
               <div class="navbar-header">
                   <%= link_to 'collect', root_path %>
@@ -32,10 +32,20 @@
                         <li><%= link_to 'ユーザサインアップ', new_user_registration_path %></li>
                         <li><%= link_to 'ユーザログイン', new_user_session_path %></li>
                   <% end %>
+              </ul>
+          </div>
+      </nav>
 
+      <nav class="navbar navbar-inverse navbar_admin">
+          <div class="container-fluid">
+              <div class="navbar-header">
+                  <%= link_to 'collect', admin_products_path %>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
                   <% if admin_signed_in? %>
                          <p>今管理者でログインしています</p>
-                        <li><%= link_to '新規追加', new_admin_product_path %></li>
+                        <li><%= link_to '新規商品登録', new_admin_product_path %></li>
                         <li><%= link_to 'ユーザ一覧',admin_users_path %></li>
                         <li><%= link_to '購入履歴', "#"%></li>
                         <li><%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %></li>
