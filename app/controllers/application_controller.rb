@@ -6,6 +6,13 @@ class ApplicationController < ActionController::Base
 	#ログイン認証済みのユーザーにのみページを表示する
 	before_action :authenticate_user!
 
+	def after_sign_in_path_for(resource)
+  		admin_products_path
+	end
+
+	def after_sign_out_path_for(resource)
+  		admin_products_path
+	end
 
 	protected
 	def configure_permitted_parameters
