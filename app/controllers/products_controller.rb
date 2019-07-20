@@ -9,5 +9,15 @@ class ProductsController < ApplicationController
 
 	def show
 		 @products = Product.find(params[:id])
+		 @cart = Cart.new
+		 
+		 @stock_array = []
+		 @products.stock.times do |quantity|
+		 	if quantity < 10
+		 		@current_stock_array += quantity + 1
+		 	else
+		 		break
+		 	end
+		 end
 	end
 end

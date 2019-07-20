@@ -23,20 +23,33 @@
         <p class="productPrice">
             <%= @products.price %>
         </p>
-        <p></p>
-        <p></p>
+        <p>
+            <%= form_for(@cart.quantity) do |f| %>
+            <%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>
+            <% end %>
+        </p>
+        <p>
+            <% if @products.stock.count == 0 %>
+            <p>売り切れ</p>
+            <% end %>
+        </p>
+        <p>
+            <!--カートへ追加機能 -->
+        </p>
     </div>
 </div>
 
 
-    <!-- ステータス -->
-    <%= @products.status %>
 
-
-
-    <% @products.disc.each do |disc| %>
-    <%= disc.disc_name %>
-    <% @products.disc.song.each do |song| %>
-    <%= song.song_name %>
-    <% end %>
-    <% end %>
+<table>
+    <tbody>
+        <tr>
+            <td><% @products.disc.each do |disc| %></td>
+            <td><%= disc.disc_name %></td>
+            <td><% @products.disc.song.each do |song| %></td>
+            <td><%= song.song_name %></td>
+        <% end %>
+        <% end %>
+    </tr>
+</tbody>
+</table>
