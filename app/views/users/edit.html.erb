@@ -1,11 +1,38 @@
 <h1>ユーザ情報編集ページ</h1>
 
 <%= form_for(@user) do |f| %>
-    <div class="form-group has-icon">
-        <label class="control-label sr-only" for="inputSurname">姓</label>
-        <%= f.text_field :surname, autofocus: true, class:"form-control", id:"inputSurname", placeholder:"姓"%>
-        <span class="fa fa-user form-control-icon" aria-hidden="true"></span>
-    </div>
+
+        <div class="form-group">
+				<%= f.label :surname, '姓' %>
+				<%= f.text_field :surname %>
+		</div>
+
+		<div class="form-group">
+				<%= f.label :firstname, '名' %>
+				<%= f.text_field :firstname %>
+		</div>
+
+		<div class="form-group">
+				<%= f.label :email, 'メールアドレス' %>
+				<%= f.text_field :email %>
+		</div>
+
+		<div class="form-group">
+				<%= f.label :phone_number, '電話番号' %>
+				<%= f.text_field :phone_number %>
+		</div>
+
+		<div class="form-group">
+				<%= f.label :zip_code, '郵便番号' %>
+				<%= f.text_field :zip_code %>
+		</div>
+
+		<div class="form-group">
+				<%= f.label :address, '住所' %>
+				<%= f.text_field :address %>
+		</div>
+
+		<p>パスワード<p>
 
 
 

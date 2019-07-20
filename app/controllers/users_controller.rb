@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  
+
   def show
-  	@user = User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def edit
@@ -10,14 +10,23 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user.id)
+
+        if  @user.update(user_params)
+            flash[:notice] = "ユーザー情報を編集しました"
+            redirect_to user_path(@user.id)
+        else
+            flash[:notice] = "ユーザー情報の編集に失敗しました"
+            render :edit
+        end
   end
+
 
   private
   def user_params
-    params.require(:user).permit(:surname)
+    params.require(:user).permit(:surname,:firstname,:kana_surname,:kana_first_name,:email,:phone_number,:zip_code,:address)
   end
 
 
 end
+
+ 

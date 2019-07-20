@@ -1,2 +1,22 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<h1>商品詳細ページ</h1>
+
+    <!-- カテゴリー -->
+    <%= @products.genre_id %>
+
+	<!-- 商品画像 -->
+	<%= attachment_image_tag @products, :image, :fill, 60, 60, format: 'jpeg' %> 
+
+	<!--  商品名 -->
+    <%= @products.product_name %>
+
+    <!-- アーティスト名 -->
+    <%= @products.artist_id %>
+
+    <!-- レーベル -->
+    <%= @products.label_id %>
+    
+    <!-- ステータス -->
+    <%= @products.status %>
+
+    <!-- 価格 -->
+    <%= @products.price %>

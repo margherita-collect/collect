@@ -4,10 +4,10 @@ class ProductsController < ApplicationController
 	skip_before_action :authenticate_user!
 
 	def index
-		@test = "test"
+		 @products= Product.all
 	end
 
 	def show
-
+		 @products = Product.find(params[:id])
 	end
 end
