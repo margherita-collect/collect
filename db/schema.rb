@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2019_07_13_082730) do
     t.integer "phone_number"
     t.integer "zip_code"
     t.string "address"
-    t.boolean "status"
+    t.boolean "status" #退会してるかしてないか
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

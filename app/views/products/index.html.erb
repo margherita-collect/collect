@@ -2,10 +2,11 @@
 
 <%  @products.each do |product|%>
 
+  <!-- 商品画像 -->
    <%= link_to product_path(product.id) do %>
        <%= attachment_image_tag product, :image, :fill, 60, 60, format: 'jpeg' %>
     <% end %>
-
+  <!-- 商品名 -->
     <%= product.product_name %>
 
     <!-- アーティスト名 -->
@@ -16,7 +17,5 @@
 
     <!-- ステータス -->
     <%= product.status %>
-
-
 
 <% end %>
