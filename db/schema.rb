@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_24_060449) do
+ActiveRecord::Schema.define(version: 2019_07_25_114316) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 2019_07_24_060449) do
 
   create_table "discs", force: :cascade do |t|
     t.integer "product_id"
-    t.string "disk_name"
-    t.integer "disk_order"
+    t.string "disc_name"
+    t.integer "disc_order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

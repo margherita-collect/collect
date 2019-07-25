@@ -6,6 +6,9 @@ class Admin::ProductsController < ApplicationController
 
     def new
         @product = Product.new
+        @labels = Label.all
+        @genres = Genre.all
+        @artists = Artist.all
     end
 
     def create
@@ -85,9 +88,9 @@ class Admin::ProductsController < ApplicationController
     end
 
     private
-    def product_params
-        params.require(:product).permit(:product_name,:image,:label_id,:genre_id,:price,:stock,:status,:artist_id)
-    end
+    # def product_params
+    #     params.require(:product).permit(:product_name,:image,:label_id,:genre_id,:price,:stock,:status,:artist_id)
+    # end
 
     def label_params
         params.require(:label).permit(:label_name)
@@ -103,6 +106,6 @@ class Admin::ProductsController < ApplicationController
 
     #ネストされたフォーム情報の取得
     def reciep_params
-        # params.require(:product).permit(:proudct_name, :image, :label_name, :genre_name, :price, :stock, :status, :artist_name, :song_name, discs_attributes: [:id, :dics_name, :_destroy])
+        params.require(:product).permit(:proudct_name, :image, :label_id, :genre_id, :price, :stock, :status, :artist_id, discs_attributes: [:id, :disc_name, :_destroy])
     end
 end
