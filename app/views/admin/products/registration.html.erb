@@ -1,14 +1,4 @@
 <h1>マスター登録</h1>
-<!-- 
-<% @labels.each do |label| %>
-     <p><%= label.label_name %></p>
-<% end %>
- -->
-<% if flash[:test] %>
-    <%= flash[:test] %>
-<% end %>
-
-
 
 <!-- form_for部分 -->
 <%= form_for(@label, url: admin_master_registration_path, method: :post) do |f| %>
@@ -27,5 +17,4 @@
     <% end %>
 
     <%= f.submit '保存' %>
-
 <% end %>

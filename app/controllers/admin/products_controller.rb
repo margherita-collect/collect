@@ -48,59 +48,41 @@ class Admin::ProductsController < ApplicationController
         @labels = Label.all
     end
 
+
+    # label, artist, genre の新規登録を行う
     def create_registration
+
+        # label項目に入力があるかの確認を行う
         if params[:label][:label_name].present?
-            flash[:test] = params[:label][:label_name]
             label = Label.new(label_params)
-            if label.save
-                redirect_to "/admin/master_registration"
-            else
+            if !label.save
                 redirect_to "/admin/products/"
+                return
             end
         end
 
+        # artist項目に入力があるかの確認を行う
         if params[:artist][:artist_name].present?
-            flash[:test] = params[:label][:label_name]
             artist = Artist.new(artist_params)
-            if artist.save
-                redirect_to "/admin/master_registration"
-            else
+            if !artist.save
                 redirect_to "/admin/products/"
+                return
             end
         end
 
+        # genre項目に入力があるかの確認を行う
         if params[:genre][:genre_name].present?
-            flash[:test] = params[:genre][:genre_name]
             genre = Genre.new(genre_params)
-            if label.save
-                redirect_to "/admin/master_registration"
-            else
+            if !genre.save
                 redirect_to "/admin/products/"
+                return
             end
-        else
-            redirect_to "/admin/products/"
         end
 
-        # if !params(:artist).nill
-        #     artist = Artist.new(artist_params)
-        #     if artist.save
-        #     else
-        #         redirect_to "/admin/products"
-        #     end
-        # end
-
-        # if !params(:genre).nill
-        #     genre = Genre.new(genre_params)
-        #     if genre.save
-        #     else
-        #         redirect_to "/admin/products"
-        #     end
-        # end
-
-        redirect_to "/admin/master_registration"
-
+        # 新規マスター登録画面へリダイレクト
+        redirect_to "/admin/master_registration/"
+        return
     end
-
 
     private
     def product_params
