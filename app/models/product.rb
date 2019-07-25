@@ -9,5 +9,5 @@ class Product < ApplicationRecord
   belongs_to :genre
   belongs_to :artist
 
-  
+  accepts_nested_attributes_for :discs, allow_destroy: true
 end

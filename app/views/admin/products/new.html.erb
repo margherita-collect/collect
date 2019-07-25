@@ -10,10 +10,10 @@
     <%= f.attachment_field :image, placeholder: "プロフィール画像", class: "user-edit-form" %>
 
     <h4>レーベルID</h4>
-    <%= f.text_field:label_id %>
+    <%= f.text_field :label_name %>
 
     <h4>ジャンルID</h4>
-    <%= f.text_field:genre_id %>
+    <%= f.text_field :genre_name %>
 
     <h4>価格（税抜き）</h4>
     <%= f.text_field :price %>
@@ -25,7 +25,7 @@
     <%= f.text_field :status %>
 
     <h4>アーティストID</h4>
-    <%= f.text_field :artist_id %>
+    <%= f.text_field :artist_name %>
 
     <h4>ディスク名</h4>
     <%= f.text_field :disc_name %>

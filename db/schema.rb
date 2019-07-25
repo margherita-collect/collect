@@ -46,6 +46,12 @@ ActiveRecord::Schema.define(version: 2019_07_24_060449) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "genres", force: :cascade do |t|
+    t.string "genre_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "labels", force: :cascade do |t|
     t.string "label_name"
     t.datetime "created_at", null: false
