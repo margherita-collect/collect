@@ -13,4 +13,5 @@
     <% end %>
 </div>
 
-<%= link_to "購入履歴一覧", "#" %>
+<%= link_to "購入履歴一覧", user_purchases_path(@user.id) %>
+<%= link_to "退会", user_registration_path, method: :delete,class: 'btn-sm btn-danger ',"data-confirm" => "本当に退会しますか？"%>
