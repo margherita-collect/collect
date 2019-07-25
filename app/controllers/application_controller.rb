@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 	#ログイン認証済みのユーザーにのみページを表示する
 	before_action :authenticate_user!
 
+	#コントローラーにあるメソッドをヘルパーのようにビューで使う。これを定義することで、セッション情報を元に、現在のカートを呼び出すことができるようになる
 	helper_method :current_cart
 
 	def current_cart
