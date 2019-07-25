@@ -1,11 +1,17 @@
+
+
+
+
+
+
 <h1>管理者商品一覧</h1>
 
 
 <% @products.each do |product| %>
-	
+
 	<!-- 商品画像 -->
 	<%= link_to admin_product_path(product.id) do %>
-       <%= attachment_image_tag product, :image, :fill, 60, 60, format: 'jpeg' %> 
+       <%= attachment_image_tag product, :image, :fill, 60, 60, format: 'jpeg' %>
     <% end %>
 
 	<!--  商品名 -->
@@ -16,15 +22,11 @@
 
     <!-- 価格 -->
     <%= product.price %>
-    
+
     <!-- ステータス -->
     <%= product.status %>
-    
-  
 <% end %>
 
 
 <%= link_to "新規商品追加", new_admin_product_path %>
 <%= link_to "マスター追加", admin_master_registration_path %>
-
-
