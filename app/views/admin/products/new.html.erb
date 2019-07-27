@@ -28,7 +28,7 @@
     <%= f.text_field :artist_id %>
 
     <!-- gem: cocoon -->
-    <div id="dicsc">
+    <div id="discs">
         <%= f.fields_for :discs do |disc| %>
             <% render "disc_fields", f: disc %>
         <% end %>
@@ -36,9 +36,6 @@
             <%= link_to_add_association "add disc", f, :discs %>
         </div>
     </div>
-
-    <h4>ディスク内の曲名</h4>
-
 
     <%= f.submit '保存' %>
 
