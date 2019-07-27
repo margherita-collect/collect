@@ -22,7 +22,7 @@
 				<td><%= purchase_product.price %></td>
 				<td><%= purchase_product.quanity*purchase_product.price %></td>
 				<td><%= purchase.address %></td>
-				<% if(puchase_product.status) %>
+				<% if purchase_product.status %>
 					<td>出荷済み</td>
 				<% else %>
 					<td>出荷準備中</td>
