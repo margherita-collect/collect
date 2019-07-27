@@ -2,5 +2,13 @@
 <div class="nested_fields">
 	<h4>ディスク名</h4>
 	<%= f.text_field :disc_name %>
+
+    <div id="songs">
+	    <%= f.fields_for :songs do |song| %>
+	        <% render "song_fields", f: song %>
+	    <% end %>
+	    <div class="links">
+	        <%= link_to_add_association "add song", f, :songs %>
+	    </div>
+	</div>
 </div>
-<p>aiueo</p>
