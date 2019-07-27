@@ -13,7 +13,7 @@ class Admin::ProductsController < ApplicationController
 
     def create
         # ストロングパラメーターを使用
-         product = Product.new(product_params)
+         product = Product.new(reciep_params)
         # DBへ保存する
          product.save
         # トップ画面へリダイレクト
@@ -44,11 +44,11 @@ class Admin::ProductsController < ApplicationController
         end
     end
 
+    # 各マスターのインスタンスを渡す
     def registration
         @label = Label.new
         @artist = Artist.new
         @genre = Genre.new
-        @labels = Label.all
     end
 
 
@@ -88,10 +88,6 @@ class Admin::ProductsController < ApplicationController
     end
 
     private
-    # def product_params
-    #     params.require(:product).permit(:product_name,:image,:label_id,:genre_id,:price,:stock,:status,:artist_id)
-    # end
-
     def label_params
         params.require(:label).permit(:label_name)
     end
