@@ -30,14 +30,16 @@ class Admin::ProductsController < ApplicationController
 
     def edit
         @product = Product.find(params[:id])
+        @labels = Label.all
+        @genres = Genre.all
+        @artists = Artist.all
     end
 
     def update
-        @product = Product.find(params[:id])
-
-        if  @product.update(product_params)
+        product = Product.find(params[:id])
+        if  product.update(reciep_params)
             flash[:notice] = "商品情報を編集しました"
-            redirect_to admin_product_path(@product.id)
+            redirect_to admin_product_path(product.id)
         else
             flash[:notice] = "商品情報の編集に失敗しました"
             render :edit
