@@ -1,1 +1,34 @@
 <h1>購入履歴一覧</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>商品名　</th>
+			<th>購入日　</th>
+			<th>枚数　</th>
+			<th>購入価格　</th>
+			<th>合計金額　</th>
+			<th>送付先　</th>
+			<th>ステータス　</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @purchases.each do |purchase| %>
+			<% purchase.purchase_products.each do |purchase_product| %>
+			<tr>
+				<td><%= purchase_product.product.product_name %></td>
+				<td><%= purchase.created_at %></td>
+				<td><%= purchase_product.quanity %></td>
+				<td><%= purchase_product.price %></td>
+				<td><%= purchase_product.quanity*purchase_product.price %></td>
+				<td><%= purchase.address %></td>
+				<% if(puchase_product.status) %>
+					<td>出荷済み</td>
+				<% else %>
+					<td>出荷準備中</td>
+				<% end %>
+			</tr>
+			<% end %>
+		<% end %>
+	</tbody>
+</table>
