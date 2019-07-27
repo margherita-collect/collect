@@ -25,7 +25,7 @@ class Admin::ProductsController < ApplicationController
     end
 
     def show
-        @products = Product.find(params[:id])
+        @product = Product.find(params[:id])
     end
 
     def edit
@@ -102,6 +102,6 @@ class Admin::ProductsController < ApplicationController
 
     #ネストされたフォーム情報の取得
     def reciep_params
-        params.require(:product).permit(:proudct_name, :image, :label_id, :genre_id, :price, :stock, :status, :artist_id, discs_attributes: [:id, :disc_name, :_destroy, songs_attributes: [:id, :song_name, :_destroy]])
+        params.require(:product).permit(:product_name, :image, :label_id, :genre_id, :price, :stock, :status, :artist_id, discs_attributes: [:id, :disc_name, :_destroy, songs_attributes: [:id, :song_name, :_destroy]])
     end
 end
