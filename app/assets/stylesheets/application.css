@@ -34,3 +34,7 @@ a {
    display: block;
    clear: both;
  }
+
+ .navbar-right li{
+ 	float: left
+ }
