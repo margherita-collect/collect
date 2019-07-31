@@ -7,12 +7,12 @@
               <ul class="nav navbar-nav navbar-right">
                   <% if user_signed_in? %>
                         <p>今ユーザでログインしています</p>
-                        <li><%= link_to 'マイページ', user_path(current_user.id) %></li>
-                        <li><%= link_to 'カート', "/" %></li>
-                        <li><%= link_to "ユーザログアウト", destroy_user_session_path, method: :delete%></li>
+                        <li><%= link_to 'マイページ　', user_path(current_user.id) %></li>
+                        <li><%= link_to 'カート　', user_carts_path(current_user) %></li>
+                        <li><%= link_to "ユーザログアウト　", destroy_user_session_path, method: :delete%></li>
                   <% else %>
-                        <li><%= link_to 'ユーザサインアップ', new_user_registration_path %></li>
-                        <li><%= link_to 'ユーザログイン', new_user_session_path %></li>
+                        <li><%= link_to 'ユーザサインアップ　', new_user_registration_path %></li>
+                        <li><%= link_to 'ユーザログイン　', new_user_session_path %></li>
                   <% end %>
               </ul>
           </div>
