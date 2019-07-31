@@ -3,7 +3,7 @@
 <% if flash[:add_cart] %>
     <h3><%= flash[:add_cart] %></h3>
 <% end %>
-
+<br>
 <% @products.each do |product| %>
 
     <table style="border: 2px black solid;">
@@ -46,7 +46,9 @@
             </tr>
             <tr>
                 <td>
-                    <%= link_to "カートへ追加", user_carts_path(current_user, product_id: product.id), method: :post %>
+                    <% if user_signed_in? %>
+                        <%= link_to "カートへ追加", user_carts_path(current_user, product_id: product.id), method: :post %>
+                    <% end %>
                 </td>
             </tr>
         </tbody>
