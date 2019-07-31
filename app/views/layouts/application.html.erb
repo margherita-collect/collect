@@ -16,37 +16,7 @@
 		</ul>
 	</div>
 
-      <nav class="navbar navbar-inverse">
-          <div class="container-fluid">
-              <div class="navbar-header">
-                  <%= link_to 'collect', root_path %>
-              </div>
-
-              <ul class="nav navbar-nav navbar-right">
-                  <% if user_signed_in? %>
-                        <p>今ユーザでログインしています</p>
-                        <li><%= link_to 'マイページ', user_path(current_user.id) %></li>
-                        <li><%= link_to 'カート', "/" %></li>
-                        <li><%= link_to "ユーザログアウト", destroy_user_session_path, method: :delete %></li>
-                  <% else %>
-                        <li><%= link_to 'ユーザサインアップ', new_user_registration_path %></li>
-                        <li><%= link_to 'ユーザログイン', new_user_session_path %></li>
-                  <% end %>
-
-                  <% if admin_signed_in? %>
-                         <p>今管理者でログインしています</p>
-                        <li><%= link_to '新規追加', new_admin_product_path %></li>
-                        <li><%= link_to 'ユーザ一覧',admin_users_path %></li>
-                        <li><%= link_to '購入履歴', "#"%></li>
-                        <li><%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %></li>
-                   <% else %>
-                        <li><%= link_to '管理者サインアップ', new_admin_registration_path %></li>
-                        <li><%= link_to '管理者ログイン', new_admin_session_path %></li>
-                  <% end %>
-
-              </ul>
-          </div>
-      </nav>
+      
 
       <% if flash[:notice] %>
           <div class="flash">
