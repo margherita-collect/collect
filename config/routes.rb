@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   resources :products, only: [:show, :index]
 
   resources :users, only: [:show, :edit, :update] do
-  	resources :purchases, only: [:index]
-  	resources :carts, only: [:create, :destroy, :index]
+  	resources :purchases, only: [:index, :create]
+  	resources :carts, only: [:index, :create, :destroy]
   end
 
   namespace :admin do

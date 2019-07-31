@@ -20,9 +20,9 @@
 			<tr>
 				<td><%= purchase_product.product.product_name %></td>
 				<td><%= purchase.created_at %></td>
-				<td><%= purchase_product.quanity %></td>
+				<td><%= purchase_product.quantity %></td>
 				<td><%= purchase_product.price %></td>
-				<td><%= purchase_product.quanity*purchase_product.price %></td>
+				<td><%= purchase_product.quantity*purchase_product.price %></td>
 				<td><%= purchase.address %></td>
 				<% if purchase_product.status %>
 					<td>出荷済み</td>

@@ -9,3 +9,5 @@
 	<span>小計: <%= item.product.price.to_i * item.quantity %></span>
 	<br>
 <% end %>
+
+<%= link_to "決済画面へ(now: 購入確定処理のリンク)", user_purchases_path, method: :post %>
