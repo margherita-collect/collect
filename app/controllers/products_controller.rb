@@ -6,7 +6,6 @@ class ProductsController < ApplicationController
 	def index
 		 #ViewのFormで取得したパラメータをモデルに渡す
     	 @products = Product.search(params[:search])
-		 
 		 @cart = Cart.new
 	end
 
