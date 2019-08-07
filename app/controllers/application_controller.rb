@@ -19,15 +19,28 @@ class ApplicationController < ActionController::Base
     end
 
 	def after_sign_in_path_for(resource)
-  		admin_products_path
+		case resource
+		when User
+			products_path
+		when Admin
+			admin_products_path
+		end
 	end
 
 	def after_sign_out_path_for(resource)
-  		admin_products_path
+		products_path
 	end
 
 	protected
 	def configure_permitted_parameters
     	devise_parameter_sanitizer.permit(:sign_up, keys: [:surname, :firstname, :kana_surname,:kana_first_name,:phone_number,:zip_code,:address,:status])
   	end
+
+	def authenticate_admin!
+		if admin_signed_in?
+			super
+		else
+			redirect_to "/public/404.html"
+		end
+	end
 end

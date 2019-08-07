@@ -71,4 +71,9 @@ gem 'jquery-rails'
 gem 'cocoon'
 gem 'font-awesome-sass'
 
-
+# console
+group :development, :test do
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'pry-doc'
+end
