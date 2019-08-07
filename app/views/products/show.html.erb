@@ -11,24 +11,28 @@
     <div class="right cdImage">
         <!-- 商品画像 -->
         <p class="productTitle">
+            <p>CD/アルバムタイトル</p>
             <%= @product.product_name %>
         </p>
         <p class="productIntro">
+            <p>アーティスト名</p>
             <%= @product.artist.artist_name %>
         </p>
         <p class="productIntro">
+            <p>ジャンル名</p>
             <%= @product.genre.genre_name %>
         </p>
         <p class="productIntro">
+            <p>レーベル名</p>
             <%= @product.label.label_name %>
         </p>
         <p class="productPrice">
-            <%= @product.price %>
+            ¥<%= @product.price %>
         </p>
         <p>
             <%= form_tag(current_user, url: user_carts_path(user_id: current_user.id), method: :post) do |f| %>
 
-            <%= select_tag :quantity, @stock_array %>
+            <%= select_tag(:quantity, options_for_select(@stock_array)) %>個
             <%= submit_tag "カートに追加" %>
             <% end %>
         </p>
