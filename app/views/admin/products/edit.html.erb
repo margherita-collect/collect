@@ -1,19 +1,22 @@
+<%= render 'layouts/header1' %>
+
 <h1>商品情報編集ページ</h1>
 
-    <%= form_for(@product, url: admin_product_path(@product.id), method: :patch) do |f| %>
+<%= form_for(@product, url: admin_product_path, method: :patch) do |f| %>
 
 
     <h4>商品名</h4>
     <%= f.text_field :product_name %>
 
     <h4>商品画像</h4>
-    <%= f.attachment_field :image, placeholder: "プロフィール画像", class: "user-edit-form" %>
+    <%= attachment_image_tag @product, :image, :fill, 60, 60, format: 'jpeg' %>
+    <%= f.attachment_field :image %>
 
     <h4>レーベルID</h4>
-    <%= f.text_field:label_id %>
+    <%= f.select :label_id, @labels.all.map{|o| [o.label_name, o.id]} %>
 
     <h4>ジャンルID</h4>
-    <%= f.text_field:genre_id %>
+    <%= f.select :genre_id, @genres.all.map{|o| [o.genre_name, o.id]} %>
 
     <h4>価格（税抜き）</h4>
     <%= f.text_field :price %>
@@ -22,14 +25,22 @@
     <%= f.text_field :stock %>
 
     <h4>ステータス（販売中/販売停止中）</h4>
-    <%= f.text_field :status %>
+    <label><%= f.radio_button :status , true %>販売中</label>
+    <label><%= f.radio_button :status , false %>販売停止中</label>
 
     <h4>アーティストID</h4>
-    <%= f.text_field :artist_id %>
+    <%= f.select :artist_id, @artists.all.map{|o| [o.artist_name, o.id]} %>
 
+    <!-- gem: cocoon -->
+    <div id="discs">
+        <%= f.fields_for :discs do |disc| %>
+            <% render "disc_fields", f: disc %>
+        <% end %>
+        <div class="links">
+            <%= link_to_add_association "add disc", f, :discs %>
+        </div>
+    </div>
 
     <%= f.submit '保存' %>
 
 <% end %>
-
-   

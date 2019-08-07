@@ -1,8 +1,9 @@
+<%= render 'layouts/header2' %>
 <h1>ユーザマイページ</h1>
 
 
 <div class="profile-container">
-    <p><%= @user.surname%>さん</p>
+    <p><%= @user.surname%> <%= @user.firstname %>さん</p>
     <p><%= @user.email%></p>
     <p><%= @user.zip_code%></p>
     <p><%= @user.address%></p>

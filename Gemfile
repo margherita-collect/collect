@@ -69,7 +69,6 @@ gem "refile-mini_magick"
 gem 'devise'
 gem 'jquery-rails'
 gem 'cocoon'
-
-
+gem 'font-awesome-sass'
 
 

@@ -1,17 +1,25 @@
+<%= render 'layouts/header1' %>
 
-<h1>ユーザマイページ</h1>
+<div class="main">
+	<div class="container clearfix">
+		<div class="user-mypage-inner">
+				<div class="profile-container">
+    				<p><%= @user.surname%>さん</p>
+    				<p><%= @user.email%></p>
+    				<p><%= @user.zip_code%></p>
+    				<p><%= @user.address%></p>
 
+					<% if @user.id == current_user.id %>
+        					<p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+    				<% end %>
 
-<div class="profile-container">
-    <p><%= @user.surname%>さん</p>
-    <p><%= @user.email%></p>
-    <p><%= @user.zip_code%></p>
-    <p><%= @user.address%></p>
-
-	<% if @user.id == current_user.id %>
-        <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-    <% end %>
+				</div>
+		</div>
+		<div class="user-mypage-inner user-mypage-right">
+			<%= link_to "購入履歴一覧", user_purchases_path(@user.id) %>
+			<%= link_to "退会", user_registration_path, method: :delete,class: 'btn-sm btn-danger ',"data-confirm" => "本当に退会しますか？"%>
+		</div>
+	</div>
 </div>
 
-<%= link_to "購入履歴一覧", user_purchases_path(@user.id) %>
-<%= link_to "退会", user_registration_path, method: :delete,class: 'btn-sm btn-danger ',"data-confirm" => "本当に退会しますか？"%>
+
