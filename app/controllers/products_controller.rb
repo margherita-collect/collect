@@ -10,12 +10,12 @@ class ProductsController < ApplicationController
 	end
 
 	def show
-		 @products = Product.find(params[:id])
+		 @product = Product.find(params[:id])
 		 @cart = Cart.new
-		 @stock_array = []
-		 @products.stock.times do |quantity|
+		 @stock_array = [1,2,3,4,5,6,7,8,9,10]
+		 @product.stock.to_i.times do |quantity|
 		 	if quantity < 10
-		 		@current_stock_array += quantity + 1
+		 		@stock_array.push(quantity + 1)
 		 	else
 		 		break
 		 	end
