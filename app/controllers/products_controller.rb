@@ -4,7 +4,9 @@ class ProductsController < ApplicationController
 	skip_before_action :authenticate_user!
 
 	def index
-		 @products= Product.all
+		 #ViewのFormで取得したパラメータをモデルに渡す
+    	 @products = Product.search(params[:search])
+		 
 		 @cart = Cart.new
 	end
 

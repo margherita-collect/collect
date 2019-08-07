@@ -1,18 +1,17 @@
-  <nav class="navbar navbar-inverse">
-          <div class="container-fluid">
-              <div class="navbar-header">
-                  <%= link_to 'collect', root_path %>
-              </div>
+  <nav class="navbar">
+          <div class="navbar_container clearfix">
+              <a class="logo"><%= link_to 'collect', root_path %></a>
 
-              <ul class="nav navbar-nav navbar-right">
+
+              <ul class="navbar-nav navbar-right">
                   <% if user_signed_in? %>
-                        <p>今ユーザでログインしています</p>
-                        <li><%= link_to 'マイページ　', user_path(current_user.id) %></li>
-                        <li><%= link_to 'カート　', user_carts_path(current_user) %></li>
-                        <li><%= link_to "ユーザログアウト　", destroy_user_session_path, method: :delete%></li>
+            
+                        <li class="nav-item"><%= link_to 'マイページ　', user_path(current_user.id) %></li>
+                        <li class="nav-item"><%= link_to 'カート　', user_carts_path(current_user) %></li>
+                        <li class="nav-item"><%= link_to "ユーザログアウト　", destroy_user_session_path, method: :delete%></li>
                   <% else %>
-                        <li><%= link_to 'ユーザサインアップ　', new_user_registration_path %></li>
-                        <li><%= link_to 'ユーザログイン　', new_user_session_path %></li>
+                        <li class="nav-item"><%= link_to 'ユーザサインアップ　', new_user_registration_path %></li>
+                        <li class="nav-item"><%= link_to 'ユーザログイン　', new_user_session_path %></li>
                   <% end %>
               </ul>
           </div>
