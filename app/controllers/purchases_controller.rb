@@ -3,6 +3,10 @@ class PurchasesController < ApplicationController
   	@purchases = current_user.purchases.all
   end
 
+  def show
+  	@purchases = current_user.purchases.all
+  end
+
   def create
   	purchase = current_user.purchases.new(zip_code: current_user.zip_code, address: current_user.address)
 	current_user.carts.each do |cart|
@@ -12,7 +16,7 @@ class PurchasesController < ApplicationController
 		current_user.carts.destroy_all
 		redirect_to user_path(current_user)
 	else
-		redirect_oto user_path(current_user)
+		redirect_to user_path(current_user)
 	end
   end
 end
