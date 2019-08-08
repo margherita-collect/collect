@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update] do
   	resources :purchases, only: [:index, :create, :show]
-  	resources :carts, only: [:index, :create, :destroy]
+  	resources :carts, only: [:index]
+    post "carts/", to: "carts#index", as: "delete_cart"
+    post "/", to: "carts#create", as: "create_cart"
   end
 
   namespace :admin do
