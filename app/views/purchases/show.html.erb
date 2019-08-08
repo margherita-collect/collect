@@ -26,4 +26,32 @@
 
 <p>決済方法</p>
 
+<label><%= f.radio_button, "クレジットカード決済" %> クレジットカード決済 </label>
+
+<label><%= f.radio_button, "代引引換" %> 代引引換</label>
+
+<p>住所</p>
+<ul>
+  <li><input type="radio" name="btn" id="a" checked="checked">既存の住所を使う</li>
+  <li><input type="radio" name="btn" id="b">新しい住所を使う</li>
+</ul>
+ 
+<div class="text text01">
+	<% @purchases.each do |purchase| %>
+	 <p><%= purchase.zip_code %></p>
+	 <p><%= purchase.address %></p>
+	<% end %>
+</div>
+<div class="text text02">
+	<%= form_for(@user) do |f| %>
+	<p>
+		〒<%= f.text_field :zip_code %>
+	</p>
+	<p>
+		<%= f.text_field :address %>
+	</p>
+	<% end %>
+</div>
+
+
 
