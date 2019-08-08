@@ -4,6 +4,8 @@ before_action :setup_cart_item!, only: [:add_item, :update_item, :delete_item]
 
   def index
   	@cart_items = current_user.carts
+    @q = Product.ransack(params[:q])
+    @products = @q.result(distinct: true)
   end
 
   def create
