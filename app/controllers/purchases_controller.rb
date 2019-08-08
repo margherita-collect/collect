@@ -3,10 +3,6 @@ class PurchasesController < ApplicationController
   	@purchases = current_user.purchases.all
   end
 
-  def show
-  	
-  end
-
   def create
   	purchase = current_user.purchases.new(zip_code: current_user.zip_code, address: current_user.address)
 	current_user.carts.each do |cart|

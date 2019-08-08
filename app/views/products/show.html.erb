@@ -6,43 +6,38 @@
 <div class="shouArea clearfix">
     <div class="left cdImage">
         <!-- 商品画像 -->
-    <%= attachment_image_tag @product, :image, :fill, 60, 60, format: 'jpeg' %> 
+    <%= attachment_image_tag @products, :image, :fill, 60, 60, format: 'jpeg' %> 
     </div>
     <div class="right cdImage">
         <!-- 商品画像 -->
         <p class="productTitle">
-            <p>CD/アルバムタイトル</p>
-            <%= @product.product_name %>
+            <%= @products.product_name %>
         </p>
         <p class="productIntro">
-            <p>アーティスト名</p>
-            <%= @product.artist.artist_name %>
+            <%= @products.artist.artist_name %>
         </p>
         <p class="productIntro">
-            <p>ジャンル名</p>
-            <%= @product.genre.genre_name %>
+            <%= @products.genre.genre_name %>
         </p>
         <p class="productIntro">
-            <p>レーベル名</p>
-            <%= @product.label.label_name %>
+            <%= @products.label.label_name %>
         </p>
         <p class="productPrice">
-            ¥<%= @product.price %>
+            <%= @products.price %>
         </p>
         <p>
-            <%= form_tag(current_user, url: user_carts_path(user_id: current_user.id), method: :post) do |f| %>
-
-            <%= select_tag(:quantity, options_for_select(@stock_array)) %>個
-            <%= submit_tag "カートに追加" %>
+            <%= form_for(@cart.quantity) do |f| %>
+            <%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>
             <% end %>
         </p>
         <p>
-            <% if @product.stock == 0 %>
+            <% if @products.stock.count == 0 %>
             <p>売り切れ</p>
             <% end %>
         </p>
         <p>
-            
+            <!-- カートに追加ボタン-->
+            <!--ボタンを押すとcarts#add_itemへとPOSTアクションを飛ばし、購入数と商品IDを飛ばしたあと、carts#showへとリダイレクトするようにする。 -->
         </p>
     </div>
 </div>
@@ -52,9 +47,9 @@
 <table>
     <tbody>
         <tr>
-            <td><% @product.discs.each do |disc| %></td>
+            <td><% @products.disc.each do |disc| %></td>
             <td><%= disc.disc_name %></td>
-            <td><% @product.discs.song.each do |song| %></td>
+            <td><% @products.disc.song.each do |song| %></td>
             <td><%= song.song_name %></td>
         <% end %>
         <% end %>
