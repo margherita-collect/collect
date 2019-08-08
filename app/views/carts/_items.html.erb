@@ -1,0 +1,11 @@
+<% @cart_items.each do |item| %>
+	<span id="name"><%= item.product.product_name %>　</span>
+	<span id="quantity"><%= item.quantity %>個　</span>
+	<span id="price">単価: <%= item.product.price %>円　</span>
+	<span id="sum">小計: <%= item.product.price.to_i * item.quantity %></span>
+	<br>
+	<%= form_tag(controller: "carts", action: "index", remote: true) do %>
+		<%= hidden_field_tag :cart_id, item.id %>
+		<%= submit_tag("削除") %>
+	<% end %>
+<% end %>

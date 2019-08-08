@@ -2,12 +2,8 @@
 
 <br>
 
-<% @cart_items.each do |item| %>
-	<span><%= item.product.product_name %>　</span>
-	<span><%= item.quantity %>個　</span>
-	<span>単価: <%= item.product.price %>円　</span>
-	<span>小計: <%= item.product.price.to_i * item.quantity %></span>
-	<br>
-<% end %>
+<div id="items">
+	<%= render partial: "items", collections: @cart_items %>
+</div>
 
 <%= link_to "決済画面へ(now: 購入確定処理のリンク)", user_purchases_path, method: :post %>
