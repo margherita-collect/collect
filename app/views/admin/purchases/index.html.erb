@@ -1,3 +1,37 @@
 <%= render 'layouts/header2' %>
-<h1>Admin::Purchases#index</h1>
-<p>Find me in app/views/admin/purchases/index.html.erb</p>
+
+<h1>購入履歴一覧</h1>
+
+
+<table>
+	<thead>
+		<tr>
+			<th>商品名　</th>
+			<th>購入日　</th>
+			<th>枚数　</th>
+			<th>購入価格　</th>
+			<th>合計金額　</th>
+			<th>送付先　</th>
+			<th>ステータス　</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @purchases.each do |purchase| %>
+			<% purchase.purchase_products.each do |purchase_product| %>
+			<tr>
+				<td><%= purchase_product.product.product_name %></td>
+				<td><%= purchase.created_at %></td>
+				<td><%= purchase_product.quantity %></td>
+				<td><%= purchase_product.price %></td>
+				<td><%= purchase_product.quantity*purchase_product.price %></td>
+				<td><%= purchase.address %></td>
+				<% if purchase_product.status %>
+					<td>出荷済み</td>
+				<% else %>
+					<td>出荷準備中</td>
+				<% end %>
+			</tr>
+			<% end %>
+		<% end %>
+	</tbody>
+</table>

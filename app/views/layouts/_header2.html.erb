@@ -12,9 +12,23 @@
                         <li><%= link_to 'ユーザ一覧',admin_users_path %></li>
                         <li><%= link_to '購入履歴', "#"%></li>
                         <li><%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %></li>
+                        <li>
+                            <%= search_form_for q do |f| %>
+                              <%= f.search_field :product_name_cont %>
+ 
+                              <%= f.submit %>
+                            <% end %>
+                        </li>
                   <% else %>
                         <li><%= link_to '管理者サインアップ', new_admin_registration_path %></li>
                         <li><%= link_to '管理者ログイン', new_admin_session_path %></li>
+                        <li>
+                            <%= search_form_for q do |f| %>
+                              <%= f.search_field :product_name_cont %>
+ 
+                              <%= f.submit %>
+                            <% end %>
+                        </li>
                   <% end %>
               </ul>
           </div>

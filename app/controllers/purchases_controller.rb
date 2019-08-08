@@ -1,9 +1,13 @@
 class PurchasesController < ApplicationController
   def index
+  	@q = Product.ransack(params[:q])
+    @products = @q.result(distinct: true)
   	@purchases = current_user.purchases.all
   end
 
   def show
+  	@q = Product.ransack(params[:q])
+    @products = @q.result(distinct: true)
   	@purchases = current_user.purchases.all
   end
 

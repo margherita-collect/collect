@@ -3,6 +3,11 @@ before_action :setup_cart_item!, only: [:add_item, :update_item, :delete_item]
 
 
   def index
+<<<<<<< HEAD
+  	@cart_items = current_user.carts
+    @q = Product.ransack(params[:q])
+    @products = @q.result(distinct: true)
+=======
     cart_destroy unless params[:cart_id].blank?
     @cart_items = current_user.carts
   end
@@ -12,6 +17,7 @@ before_action :setup_cart_item!, only: [:add_item, :update_item, :delete_item]
     item.destroy
     @cart_items = current_user.carts
     render
+>>>>>>> db9a48b1df706d3e77b3874dce9e2155d02f25d7
   end
 
   def create
