@@ -9,8 +9,9 @@ Rails.application.routes.draw do
   resources :products, only: [:show, :index]
 
   resources :users, only: [:show, :edit, :update] do
-  	resources :purchases, only: [:index, :create, :show]
+  	resources :purchases, only: [:index, :create]
   	resources :carts, only: [:index, :create]
+    get "carts/confirmation", to: "carts#confirmation", as: "cart_confirmation"
     post "carts/update", to: "carts#cart_update", as: "cart_update"
     delete "carts/delete", to: "carts#cart_destroy", as: "cart_delete"
   end

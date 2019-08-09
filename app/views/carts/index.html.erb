@@ -28,6 +28,6 @@
 <% end %>
 
 <p>合計金額: </span><span id="total_price"><%= total_price %></span><span>円 </p>
-<%= link_to "決済画面へ(now: 購入確定処理のリンク)", user_purchases_path, method: :post %>
+<%= link_to "決済画面へ", user_cart_confirmation_path %>
 
 <script src="/assets/cart_actions.js" type="text/javascript" charset="utf-8"></script>
