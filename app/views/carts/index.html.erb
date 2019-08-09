@@ -1,6 +1,7 @@
 <%= render 'layouts/header1',q: @q %>
 
 <br>
+<% total_price = 0 %>
 <% @cart_items.each do |item| %>
 	<div id="item_<%= item.id %>">
 		<span id="image"><%= attachment_image_tag item.product, :image, :fill, 60, 60, format: 'jpeg' %></span>
@@ -9,7 +10,8 @@
 			<span id="artist_name"><%= item.product.artist.artist_name %></span>
 		<% end %>
 		<span>単価: </span><span id="price"><%= item.product.price %></span><span>円　</span>
-		<span>小計: </span><span id="sum"><%= item.product.price.to_i * item.quantity %></span><span>円　</span>
+		<span>小計: </span><span id="sum"><%= price = item.product.price.to_i * item.quantity %></span><span>円　</span>
+		<% total_price += price %>
 		<br>
 
 		<!-- 非同期個数変更 -->
@@ -25,7 +27,7 @@
 	</div>
 <% end %>
 
-
+<p>合計金額: </span><span id="total_price"><%= total_price %></span><span>円 </p>
 <%= link_to "決済画面へ(now: 購入確定処理のリンク)", user_purchases_path, method: :post %>
 
 <script src="/assets/cart_actions.js" type="text/javascript" charset="utf-8"></script>

@@ -19,10 +19,13 @@ $("select.select_quantity").change(function() {
 		},
 		dataType: "html",
 	})
+	var before_sum = $(this).siblings("#sum").text() - 0;
 	var quantity = $(this).val();
 	var price = $(this).siblings("span#price").text();
 	var sum = quantity * price;
 	$(this).siblings("#sum").text(`${sum}`)
+	var total_price = $("#total_price").text() - 0;
+	$("#total_price").text(`${total_price + sum - before_sum}`)
 })
 
 $("button.delete_item").click(function() {
@@ -33,6 +36,10 @@ $("button.delete_item").click(function() {
 	},
 	dataType: "html"
 	})
-	val = $(this).attr("id")
-	$(this).parents("div").fadeOut()
+	val = $(this).attr("id");
+	$(this).parents("div").fadeOut();
+	var sum = $(this).siblings("#sum").text();
+	var total_price = $("#total_price").text();
+	$("#total_price").text(`${total_price - sum}`);
+
 })
