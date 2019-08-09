@@ -1,9 +1,8 @@
 <%= render 'layouts/header1' %>
 
 <br>
-
-<div id="items">
-	<% @cart_items.each do |item| %>
+<% @cart_items.each do |item| %>
+	<div id="item_<%= item.id %>">
 		<span id="image"><%= attachment_image_tag item.product, :image, :fill, 60, 60, format: 'jpeg' %></span>
 		<span id="product_name"><%= item.product.product_name %>　</span>
 		<% if item.product.artist.present? %>
@@ -20,13 +19,12 @@
 
 
 		<!-- 非同期カ商品削除 -->
-		<%= form_tag(controller: "carts", action: "index", remote: true) do %>
-			<%= hidden_field_tag :ajax_handler, "delete_cart" %>
-			<%= hidden_field_tag :cart_id, item.id %>
-			<%= submit_tag("削除") %>
-		<% end %>
-	<% end %>
-</div>
+		<button type="button" id="<%= item.id %>", class="delete_item">削除</button>
+		<br>
+		<br>
+	</div>
+<% end %>
+
 
 <%= link_to "決済画面へ(now: 購入確定処理のリンク)", user_purchases_path, method: :post %>
 
