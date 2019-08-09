@@ -43,7 +43,7 @@
             <tr>
                 <td>
                     <% if user_signed_in? %>
-                        <%= link_to "カートへ追加", user_create_cart_path(current_user, product_id: product.id), method: :post %>
+                        <%= link_to "カートへ追加", user_carts_path(current_user, product_id: product.id), method: :post %>
                     <% end %>
                 </td>
             </tr>

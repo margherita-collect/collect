@@ -1,3 +1,4 @@
+// csrf用のトークン発行
 $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
     var token;
     if (!options.crossDomain) {
@@ -8,6 +9,7 @@ $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
      }
  });
 
+// セレクトタグ(商品個数)の変更値をDBに反映
 $("select.select_quantity").change(function() {
 	$.ajax({
 		url: "carts/update",
@@ -17,4 +19,16 @@ $("select.select_quantity").change(function() {
 		},
 		dataType: "html",
 	})
+})
+
+$("button.delete_item").click(function() {
+	$.ajax({
+		url: "carts/delete",
+		type: "DELETE",
+		data: {cart_id: $(this).attr("id"),
+	},
+	dataType: "html"
+	})
+	val = $(this).attr("id")
+	$(this).parents("div").fadeOut()
 })
