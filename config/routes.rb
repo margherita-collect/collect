@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update] do
   	resources :purchases, only: [:index, :create, :show]
   	resources :carts, only: [:index]
+    post "carts/update", to: "carts#cart_update", as: "cart_update"
     post "carts/", to: "carts#index", as: "delete_cart"
     post "/", to: "carts#create", as: "create_cart"
   end

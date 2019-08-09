@@ -4,6 +4,7 @@ before_action :setup_cart_item!, only: [:add_item, :update_item, :delete_item]
 
   def index
     cart_destroy unless params[:cart_id].blank?
+    cart_update unless params[:quantity].blank?
     @cart_items = current_user.carts
   end
 
@@ -12,6 +13,13 @@ before_action :setup_cart_item!, only: [:add_item, :update_item, :delete_item]
     item.destroy
     @cart_items = current_user.carts
     render
+  end
+
+  def cart_update
+    item = Cart.find(params[:cart_id])
+    item.quantity = params[:quantity]
+    item.save
+    render body: nil
   end
 
   def create
