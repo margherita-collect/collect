@@ -19,6 +19,10 @@ $("select.select_quantity").change(function() {
 		},
 		dataType: "html",
 	})
+	var quantity = $(this).val();
+	var price = $(this).siblings("span#price").text();
+	var sum = quantity * price;
+	$(this).siblings("#sum").text(`${sum}`)
 })
 
 $("button.delete_item").click(function() {

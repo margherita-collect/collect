@@ -8,8 +8,8 @@
 		<% if item.product.artist.present? %>
 			<span id="artist_name"><%= item.product.artist.artist_name %></span>
 		<% end %>
-		<span id="price">単価: <%= item.product.price %>円　</span>
-		<span id="sum">小計: <%= item.product.price.to_i * item.quantity %></span>
+		<span>単価: </span><span id="price"><%= item.product.price %></span><span>円　</span>
+		<span>小計: </span><span id="sum"><%= item.product.price.to_i * item.quantity %></span><span>円　</span>
 		<br>
 
 		<!-- 非同期個数変更 -->
