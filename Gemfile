@@ -70,6 +70,7 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'cocoon'
 gem 'font-awesome-sass'
+gem 'ransack'
 
 # console
 group :development, :test do

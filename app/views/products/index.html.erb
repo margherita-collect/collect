@@ -1,16 +1,5 @@
-<%= render 'layouts/header1' %>
+<%= render 'layouts/header1',q: @q %>
 
-<%= form_tag products_path, :method => 'get' do %> <%#products_pathはモデル名で読みかえること %>
-          <p>
-              <%= text_field_tag :search %>
-              <%= submit_tag "Search", :product_name => nil %>
-          </p>
-<% end %>
-
-<% if flash[:add_cart] %>
-    <h3><%= flash[:add_cart] %></h3>
-<% end %>
-<br>
 <% @products.each do |product| %>
 
     <table style="border: 2px black solid;">
@@ -64,4 +53,5 @@
 
 
 <%= link_to '商品詳細', product_path(@products) %>
+
 

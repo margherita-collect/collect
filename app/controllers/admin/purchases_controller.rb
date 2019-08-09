@@ -5,6 +5,7 @@ class Admin::PurchasesController < ApplicationController
 	before_action :authenticate_admin!
 
     def index
+    	@purchases = Purchase.all
     end
 
     def update
