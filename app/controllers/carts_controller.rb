@@ -9,6 +9,7 @@ before_action :setup_cart_item!, only: [:add_item, :update_item, :delete_item]
     @products = @q.result(distinct: true)
 =======
     cart_destroy unless params[:cart_id].blank?
+    cart_update unless params[:quantity].blank?
     @cart_items = current_user.carts
   end
 
@@ -18,6 +19,13 @@ before_action :setup_cart_item!, only: [:add_item, :update_item, :delete_item]
     @cart_items = current_user.carts
     render
 >>>>>>> db9a48b1df706d3e77b3874dce9e2155d02f25d7
+  end
+
+  def cart_update
+    item = Cart.find(params[:cart_id])
+    item.quantity = params[:quantity]
+    item.save
+    render body: nil
   end
 
   def create

@@ -3,7 +3,31 @@
 <br>
 
 <div id="items">
-	<%= render partial: "items", collections: @cart_items %>
+	<% @cart_items.each do |item| %>
+		<span id="image"><%= attachment_image_tag item.product, :image, :fill, 60, 60, format: 'jpeg' %></span>
+		<span id="product_name"><%= item.product.product_name %>　</span>
+		<% if item.product.artist.present? %>
+			<span id="artist_name"><%= item.product.artist.artist_name %></span>
+		<% end %>
+		<span id="price">単価: <%= item.product.price %>円　</span>
+		<span id="sum">小計: <%= item.product.price.to_i * item.quantity %></span>
+		<br>
+
+		<!-- 非同期個数変更 -->
+		<% stock_array = [] %>
+		<% item.product.stock.to_i.times do |i| (stock_array.push(i+1)) end %>
+		<%= select_tag "quantity", options_for_select(stock_array,  selected: item.quantity),id: "#{item.id}", class: "select_quantity" %>
+
+
+		<!-- 非同期カ商品削除 -->
+		<%= form_tag(controller: "carts", action: "index", remote: true) do %>
+			<%= hidden_field_tag :ajax_handler, "delete_cart" %>
+			<%= hidden_field_tag :cart_id, item.id %>
+			<%= submit_tag("削除") %>
+		<% end %>
+	<% end %>
 </div>
 
 <%= link_to "決済画面へ(now: 購入確定処理のリンク)", user_purchases_path, method: :post %>
+
+<script src="/assets/cart_actions.js" type="text/javascript" charset="utf-8"></script>
