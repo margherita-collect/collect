@@ -41,7 +41,7 @@ before_action :setup_cart_item!, only: [:add_item, :update_item, :delete_item]
       @cart = @cart_items.find_by(product_id: @product_id)
       @cart.quantity = @cart.quantity.to_i + 1
     else
-      @cart = current_user.carts.new(product_id: @product_id, quantity: 1)
+      @cart = @cart_items.new(product_id: @product_id, quantity: 1)
     end
 
     # カートを保存

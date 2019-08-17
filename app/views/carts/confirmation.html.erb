@@ -23,8 +23,8 @@
 </table>
 
 <p>決済方法</p>
-
-
+<p><input type="radio" name="ql" value="yes">クレジットカード決済</p>
+<p><input type="radio" name="ql" value="yes">代引引換</p>
 
 <p>住所</p>
 <ul>
@@ -34,8 +34,11 @@
  
 <div class="text text01">
 	<% @users.each do |user| %>
+	<div>
+	<input type="radio" name="ql" value="yes">
 	 <p><%= user.zip_code %></p>
 	 <p><%= user.address %></p>
+	</div>
 	<% end %>
 </div>
 <div class="text text02">
@@ -50,3 +53,4 @@
 	</p>
 	<% end %>
 </div>
+

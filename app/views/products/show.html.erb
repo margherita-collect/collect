@@ -31,7 +31,7 @@
         </p>
         <p>
             <%= form_tag('/users/user_id/carts', method: :post) do |f| %>
-
+            
             <%= select_tag(:quantity, options_for_select(@stock_array)) %>個
             <%= submit_tag "カートに追加" %>
             <% end %>
