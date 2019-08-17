@@ -33,17 +33,19 @@
 </ul>
  
 <div class="text text01">
-	<% @current_user.each do |current| %>
-	 <p><%= current.zip_code %></p>
-	 <p><%= current.address %></p>
+	<% @users.each do |user| %>
+	 <p><%= user.zip_code %></p>
+	 <p><%= user.address %></p>
 	<% end %>
 </div>
 <div class="text text02">
-	<%= form_for(@user) do |f| %>
+	<%= form_for(current_user) do |f| %>
 	<p>
-		〒<%= f.text_field :zip_code %>
+		<%= f.label :zip_code, '郵便番号' %>
+		<%= f.text_field :zip_code %>
 	</p>
 	<p>
+		<%= f.label :address, '住所' %>
 		<%= f.text_field :address %>
 	</p>
 	<% end %>

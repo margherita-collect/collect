@@ -8,14 +8,14 @@ before_action :setup_cart_item!, only: [:add_item, :update_item, :delete_item]
     @products = @q.result(distinct: true)
   end
 
-<<<<<<< HEAD
-  def confirmation
+ def confirmation
+  @cart_items = current_user.carts
     @q = Product.ransack(params[:q])
     @products = @q.result(distinct: true)
-    @cart_items = current_user.carts
+    @users = User.all
     @user = User.new
-    @current = User.all
-=======
+  end
+
   def cart_destroy
     item = Cart.find(params[:cart_id])
     item.destroy
@@ -27,17 +27,18 @@ before_action :setup_cart_item!, only: [:add_item, :update_item, :delete_item]
     item.quantity = params[:quantity]
     item.save
     render body: nil
->>>>>>> 44acef2a83f3a01a66c73ecbfcbca3f73c86efe9
   end
 
   def create
     # パラメータから商品IDを取得
     @cart_items = current_user.carts
     @product_id = params[:product_id]
+    @q = Product.ransack(params[:q])
+    @products = @q.result(distinct: true)
 
     # カートの新規作成または個数追加
-    if current_user.carts.find_by(product_id: @product_id)
-      @cart = current_user.carts.find_by(product_id: @product_id)
+    if @cart_items.find_by(product_id: @product_id)
+      @cart = @cart_items.find_by(product_id: @product_id)
       @cart.quantity = @cart.quantity.to_i + 1
     else
       @cart = current_user.carts.new(product_id: @product_id, quantity: 1)
