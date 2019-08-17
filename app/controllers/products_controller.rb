@@ -5,12 +5,13 @@ class ProductsController < ApplicationController
 
 	def index
 		 #ViewのFormで取得したパラメータをモデルに渡す
-    	 @products = Product.search(params[:search])
+    	 @q = Product.ransack(params[:q])
+    	 @products = @q.result(distinct: true)
 		 @cart = Cart.new
 	end
 
 	def show
-		 @q = Product.ransack(params[:q])
+		@q = Product.ransack(params[:q])
     	 @products = @q.result(distinct: true)
 
 		 @product = Product.find(params[:id])

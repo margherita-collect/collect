@@ -8,12 +8,26 @@ before_action :setup_cart_item!, only: [:add_item, :update_item, :delete_item]
     @products = @q.result(distinct: true)
   end
 
+<<<<<<< HEAD
   def confirmation
     @q = Product.ransack(params[:q])
     @products = @q.result(distinct: true)
     @cart_items = current_user.carts
     @user = User.new
     @current = User.all
+=======
+  def cart_destroy
+    item = Cart.find(params[:cart_id])
+    item.destroy
+    render body: nil
+  end
+
+  def cart_update
+    item = Cart.find(params[:cart_id])
+    item.quantity = params[:quantity]
+    item.save
+    render body: nil
+>>>>>>> 44acef2a83f3a01a66c73ecbfcbca3f73c86efe9
   end
 
   def create

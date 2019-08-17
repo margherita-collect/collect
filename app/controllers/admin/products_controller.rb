@@ -5,6 +5,9 @@ class Admin::ProductsController < ApplicationController
 	before_action :authenticate_admin!
 
     def new
+        @q = Product.ransack(params[:q])
+        @products = @q.result(distinct: true)
+
         @product = Product.new
         @labels = Label.all
         @genres = Genre.all
@@ -21,14 +24,23 @@ class Admin::ProductsController < ApplicationController
     end
 
     def index
-        @products= Product.all
+        @q = Product.ransack(params[:q])
+        @products = @q.result(distinct: true)
+
+        #@products= Product.all
     end
 
     def show
+        @q = Product.ransack(params[:q])
+        @products = @q.result(distinct: true)
+        
         @product = Product.find(params[:id])
     end
 
     def edit
+        @q = Product.ransack(params[:q])
+        @products = @q.result(distinct: true)
+
         @product = Product.find(params[:id])
         @labels = Label.all
         @genres = Genre.all
@@ -48,6 +60,9 @@ class Admin::ProductsController < ApplicationController
 
     # 各マスターのインスタンスを渡す
     def registration
+        @q = Product.ransack(params[:q])
+        @products = @q.result(distinct: true)
+
         @label = Label.new
         @artist = Artist.new
         @genre = Genre.new
