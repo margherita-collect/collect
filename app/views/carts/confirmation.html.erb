@@ -24,9 +24,7 @@
 
 <p>決済方法</p>
 
-<label><%= f.radio_button, "クレジットカード決済" %> クレジットカード決済 </label>
 
-<label><%= f.radio_button, "代引引換" %> 代引引換</label>
 
 <p>住所</p>
 <ul>
@@ -35,7 +33,7 @@
 </ul>
  
 <div class="text text01">
-	<% current_user.each do |current| %>
+	<% @current_user.each do |current| %>
 	 <p><%= current.zip_code %></p>
 	 <p><%= current.address %></p>
 	<% end %>

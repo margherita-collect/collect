@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   root to: 'products#index'
 
-  #post '/add_item' => 'carts#create'
+  get '/confirmation' => 'carts#confirmation'
 
   resources :products, only: [:show, :index]
 
