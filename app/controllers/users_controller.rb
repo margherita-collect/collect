@@ -1,10 +1,14 @@
 class UsersController < ApplicationController
 
   def show
+    @q = Product.ransack(params[:q])
+    @products = @q.result(distinct: true)
     @user = User.find(params[:id])
   end
 
   def edit
+    @q = Product.ransack(params[:q])
+    @products = @q.result(distinct: true)
     @user = User.find(params[:id])
   end
 

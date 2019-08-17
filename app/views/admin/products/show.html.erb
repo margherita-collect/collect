@@ -1,25 +1,28 @@
+<%= render 'layouts/header2',q: @q  %>
+
+<br>
+
 <h1>商品詳細ページ</h1>
-
-
-
 	<!-- 商品画像 -->
-	<%= attachment_image_tag @products, :image, :fill, 60, 60, format: 'jpeg' %> 
+	<%= attachment_image_tag @product, :image, :fill, 60, 60, format: 'jpeg' %>
 
 	<!--  商品名 -->
-    <%= @products.product_name %>
+    <h3><%= @product.product_name %></h3>
 
     <!-- アーティスト名 -->
-    <%= @products.artist_id %>
+    <h3><%= @product.artist.artist_name %></h3>
 
     <!-- レーベル -->
-    <%= @products.label_id %>
-    
-    <!-- ステータス -->
-    <%= @products.status %>
+    <h3><%= @product.label.label_name %></h3>
 
     <!-- 価格 -->
-    <%= @products.price %>
-    
+    <h3><%= @product.price %></h3>
 
-<%= link_to "商品編集", edit_admin_product_path(@products.id) %>
-<p>ディスク１</p>
+    <% @product.discs.each do |disc| %>
+        <h3><%= disc.disc_name %></h3>
+        <% disc.songs.each do |song| %>
+            <h5><%= song.song_name %></h5>
+        <% end %>
+    <% end %>
+
+<%= link_to "商品編集", edit_admin_product_path(@product.id) %>

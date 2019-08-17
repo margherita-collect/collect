@@ -1,22 +1,55 @@
+<%= render 'layouts/header1',q: @q %>
+
 <h1>商品詳細ページ</h1>
 
-    <!-- カテゴリー -->
-    <%= @products.genre_id %>
 
-	<!-- 商品画像 -->
-	<%= attachment_image_tag @products, :image, :fill, 60, 60, format: 'jpeg' %> 
+<div class="shouArea clearfix">
+    <div class="left cdImage">
+        <!-- 商品画像 -->
+    <%= attachment_image_tag @product, :image, :fill, 60, 60, format: 'jpeg' %> 
+    </div>
+    <div class="right cdImage">
+        <!-- 商品画像 -->
+        <p class="productTitle">
+            <p>CD/アルバムタイトル</p>
+            <%= @product.product_name %>
+        </p>
+        <p class="productIntro">
+            <p>アーティスト名</p>
+            <%= @product.artist.artist_name %>
+        </p>
+        <p class="productIntro">
+            <p>ジャンル名</p>
+            <%= @product.genre.genre_name %>
+        </p>
+        <p class="productIntro">
+            <p>レーベル名</p>
+            <%= @product.label.label_name %>
+        </p>
+        <p class="productPrice">
+            ¥<%= @product.price %>
+        </p>
+        <p>
+            <%= form_tag(current_user, url: user_carts_path(user_id: current_user.id), method: :post) do |f| %>
 
-	<!--  商品名 -->
-    <%= @products.product_name %>
+            <%= select_tag(:quantity, options_for_select(@stock_array)) %>個
+            <%= submit_tag "カートに追加" %>
+            <% end %>
+        </p>
+        <p>
+            <% if @product.stock == 0 %>
+            <p>売り切れ</p>
+            <% end %>
+        </p>
+        <p>
+            
+        </p>
+    </div>
+</div>
 
-    <!-- アーティスト名 -->
-    <%= @products.artist_id %>
 
-    <!-- レーベル -->
-    <%= @products.label_id %>
-    
-    <!-- ステータス -->
-    <%= @products.status %>
 
-    <!-- 価格 -->
-    <%= @products.price %>
+
+
+
+

@@ -1,2 +1,33 @@
-<h1>Carts#index</h1>
-<p>Find me in app/views/carts/index.html.erb</p>
+<%= render 'layouts/header1',q: @q %>
+
+<br>
+<% total_price = 0 %>
+<% @cart_items.each do |item| %>
+	<div id="item_<%= item.id %>">
+		<span id="image"><%= attachment_image_tag item.product, :image, :fill, 60, 60, format: 'jpeg' %></span>
+		<span id="product_name"><%= item.product.product_name %>　</span>
+		<% if item.product.artist.present? %>
+			<span id="artist_name"><%= item.product.artist.artist_name %></span>
+		<% end %>
+		<span>単価: </span><span id="price"><%= item.product.price %></span><span>円　</span>
+		<span>小計: </span><span id="sum"><%= price = item.product.price.to_i * item.quantity %></span><span>円　</span>
+		<% total_price += price %>
+		<br>
+
+		<!-- 非同期個数変更 -->
+		<% stock_array = [] %>
+		<% item.product.stock.to_i.times do |i| (stock_array.push(i+1)) end %>
+		<%= select_tag "quantity", options_for_select(stock_array,  selected: item.quantity),id: "#{item.id}", class: "select_quantity" %>
+
+
+		<!-- 非同期カ商品削除 -->
+		<button type="button" id="<%= item.id %>", class="delete_item">削除</button>
+		<br>
+		<br>
+	</div>
+<% end %>
+
+<p>合計金額: </span><span id="total_price"><%= total_price %></span><span>円 </p>
+<%= link_to "決済画面へ", user_cart_confirmation_path %>
+
+<script src="/assets/cart_actions.js" type="text/javascript" charset="utf-8"></script>

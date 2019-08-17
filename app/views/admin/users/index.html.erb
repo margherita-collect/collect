@@ -1,6 +1,7 @@
+<%= render 'layouts/header2' %>
+
 <h1>ユーザ一覧/管理者</h1>
 
 <%  @users.each do |user|%>
    <%= link_to user.surname, admin_user_path(user.id) %>
-            
 <% end %>

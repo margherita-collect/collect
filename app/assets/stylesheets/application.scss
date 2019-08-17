@@ -14,6 +14,8 @@
  *= require_self
  */
 
+ @import "font-awesome";
+
 * {
    margin: 0;
    padding: 0;
@@ -22,9 +24,10 @@
 
 a {
    text-decoration: none;
+   color: #e6e6fa;
  }
 
- 
+
  li {
    list-style: none;
  }
@@ -34,3 +37,54 @@ a {
    display: block;
    clear: both;
  }
+
+/*共通*/
+.main{
+	display: block;
+    position: relative;
+    background-color: #FA5882;
+}
+
+.container{
+	max-width: 728px;
+    margin: 0 auto;
+    background-color: #819FF7;
+}
+
+/*ヘッダー*/
+.navbar{
+	height: 45px;
+	top:0;
+	left:0;
+	right:0;
+	background-color: #44617b;
+}
+
+.navbar_container{
+	width: 728px;
+	margin: 0 auto;
+}
+
+.navbar-right{
+	float: right;
+}
+
+ .navbar-right li{
+ 	float: left;
+ }
+
+.text {
+  display: none;
+}
+.text01 {
+  display: block;
+}
+
+
+
+
+
+
+
+
+

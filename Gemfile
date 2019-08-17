@@ -67,7 +67,14 @@ gem "refile-mini_magick"
 
 # Original
 gem 'devise'
+gem 'jquery-rails'
+gem 'cocoon'
+gem 'font-awesome-sass'
+gem 'ransack'
 
-
-
-
+# console
+group :development, :test do
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'pry-doc'
+end
