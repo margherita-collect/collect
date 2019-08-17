@@ -6,11 +6,13 @@ Rails.application.routes.draw do
 
   root to: 'products#index'
 
+  #post '/add_item' => 'carts#create'
+
   resources :products, only: [:show, :index]
 
   resources :users, only: [:show, :edit, :update] do
   	resources :purchases, only: [:index, :create, :show]
-  	resources :carts, only: [:index, :create, :destroy]
+  	resources :carts, only: [:index,  :create, :destroy]
   end
 
   namespace :admin do

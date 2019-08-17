@@ -1,0 +1,52 @@
+<%= render 'layouts/header1' %>
+
+<p>購入情報確定</p>
+<table>
+	<thead>
+		<tr>
+			<th>商品名　</th>
+			<th>枚数　</th>
+			<th>購入価格　</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @cart_items.each do |item| %>
+			<tr>
+				<td><%= item.product.product_name %></td>
+				<td><%= item.quantity %></td>
+				<td><%= item.product.price %></td>
+			</tr>
+			<p>合計</p>
+			<p><%= item.product.price.to_i * item.quantity %></p>
+		<% end %>
+	</tbody>
+</table>
+
+<p>決済方法</p>
+
+<label><%= f.radio_button, "クレジットカード決済" %> クレジットカード決済 </label>
+
+<label><%= f.radio_button, "代引引換" %> 代引引換</label>
+
+<p>住所</p>
+<ul>
+  <li><input type="radio" name="btn" id="a" checked="checked">既存の住所を使う</li>
+  <li><input type="radio" name="btn" id="b">新しい住所を使う</li>
+</ul>
+ 
+<div class="text text01">
+	<% current_user.each do |current| %>
+	 <p><%= current.zip_code %></p>
+	 <p><%= current.address %></p>
+	<% end %>
+</div>
+<div class="text text02">
+	<%= form_for(@user) do |f| %>
+	<p>
+		〒<%= f.text_field :zip_code %>
+	</p>
+	<p>
+		<%= f.text_field :address %>
+	</p>
+	<% end %>
+</div>
