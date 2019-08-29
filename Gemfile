@@ -71,6 +71,7 @@ gem 'jquery-rails'
 gem 'cocoon'
 gem 'font-awesome-sass'
 gem 'ransack'
+gem 'paranoia'
 
 # console
 group :development, :test do
