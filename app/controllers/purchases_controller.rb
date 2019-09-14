@@ -11,7 +11,7 @@ class PurchasesController < ApplicationController
   	@purchases = current_user.purchases.all
   end
 
-  def create
+  def createit
     if params[:zip_code].empty? && params[:address].empty?
   	  purchase = current_user.purchases.new(zip_code: current_user.zip_code, address: current_user.address)
     else
