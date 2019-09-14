@@ -6,7 +6,7 @@
 <div class="shouArea clearfix">
     <div class="left cdImage">
         <!-- 商品画像 -->
-    <%= attachment_image_tag @product, :image, :fill, 60, 60, format: 'jpeg' %> 
+    <%= attachment_image_tag @product, :image, :fill, 60, 60, format: 'jpeg' %>
     </div>
     <div class="right cdImage">
         <!-- 商品画像 -->
@@ -29,16 +29,13 @@
         <p class="productPrice">
             ¥<%= @product.price %>
         </p>
-        <% if user_signed_in? %>
-            <p>
-                <%= form_tag(current_user, url: user_carts_path(user_id: current_user.id), method: :post) do |f| %>
-
-                <%= select_tag(:quantity, options_for_select(@stock_array)) %>個
-                <%= submit_tag "カートに追加" %>
-                <% end %>
-            </p>
-        <% end %>
-
+        <p>
+            <%= form_tag(user_carts_path(current_user, product_id: @product.id), method: :post) do |f| %>
+            
+            <%= select_tag(:quantity, options_for_select(@stock_array)) %>個
+            <%= submit_tag "カートに追加" %>
+            <% end %>
+        </p>
         <p>
             <% if @product.stock == 0 %>
             <p>売り切れ</p>
