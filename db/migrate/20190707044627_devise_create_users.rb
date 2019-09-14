@@ -40,7 +40,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.integer :zip_code
       t.string :address
       t.boolean :status
-      
+
 
 
       t.timestamps null: false
