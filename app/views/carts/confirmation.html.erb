@@ -1,2 +1,65 @@
-<h1>購入確定画面</h1>
-<p>carts/confimation.html.erb</p>
+<%= render 'layouts/header1',q: @q %>
+
+<p>購入情報確定</p>
+<table>
+	<thead>
+		<tr>
+			<th>　</th>
+			<th>商品名　</th>
+			<th>アーティスト名</th>
+			<th>枚数　</th>
+			<th>購入価格　</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% sum=0 %>
+		<% @cart_items.each do |item| %>
+			<tr>
+				<td><%= attachment_image_tag item.product, :image, :fill, 60, 60, format: 'jpeg' %></td>
+				<td><%= item.product.product_name %></td>
+				<td><%= item.product.artist.artist_name %></td>
+				<td><%= item.quantity %></td>
+				<td><%= item.product.price %></td>
+				<% sum += item.product.price.to_i * item.quantity  %>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<p>合計価格</p>
+<p><%= sum %></p>
+
+<p>決済方法</p>
+<p><input type="radio" name="ql" value="yes">クレジットカード決済</p>
+<p><input type="radio" name="ql" value="yes">代引引換</p>
+
+
+
+ <%= form_tag(user_purchases_path(current_user), method: :post) do %>
+<p>住所</p>
+<ul>
+  <li><input type="radio" name="btn" id="a" checked="checked">既存の住所を使う</li>
+  <li><input type="radio" name="btn" id="b">新しい住所を使う</li>
+</ul>
+
+<div class="text text01">
+	<% @users.each do |user| %>
+	<div>
+	<input type="radio" name="ql" value="yes">
+	 <p><%= user.zip_code %></p>
+	 <p><%= user.address %></p>
+	</div>
+	<% end %>
+</div>
+<div class="text text02">
+		<%= label_tag :郵便番号 %>
+		<%= text_field_tag :zip_code %>
+
+		<%= label_tag :住所 %>
+		<%= text_field_tag :address %>
+
+	
+</div>
+<%= submit_tag "購入確定" %>
+	<% end %>
+
