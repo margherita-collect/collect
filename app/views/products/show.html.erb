@@ -29,20 +29,23 @@
         <p class="productPrice">
             ¥<%= @product.price %>
         </p>
-        <p>
-            <%= form_tag(current_user, url: user_carts_path(user_id: current_user.id), method: :post) do |f| %>
+        <% if user_signed_in? %>
+            <p>
+                <%= form_tag(current_user, url: user_carts_path(user_id: current_user.id), method: :post) do |f| %>
 
-            <%= select_tag(:quantity, options_for_select(@stock_array)) %>個
-            <%= submit_tag "カートに追加" %>
-            <% end %>
-        </p>
+                <%= select_tag(:quantity, options_for_select(@stock_array)) %>個
+                <%= submit_tag "カートに追加" %>
+                <% end %>
+            </p>
+        <% end %>
+
         <p>
             <% if @product.stock == 0 %>
             <p>売り切れ</p>
             <% end %>
         </p>
         <p>
-            
+
         </p>
     </div>
 </div>
